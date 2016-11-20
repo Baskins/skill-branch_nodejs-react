@@ -26,7 +26,7 @@ app.get('/task-2D', function (req, res) {
       return;
     }
 
-    const _COLOR = COLOR.trim();
+    const _COLOR = decodeURI(COLOR.trim()).replace(/#/, '');
     if (!/^[0-9a-fA-F]{3}$|^[0-9a-fA-F]{6}$/.test(_COLOR)) {
       console.log('Incorrect param');
       res.send(ERROR);

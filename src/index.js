@@ -1,4 +1,3 @@
-// import {} from 'babel-polyfill';
 import express from 'express';
 import parser from 'body-parser';
 import cors from 'cors';

@@ -20,7 +20,7 @@ router.get('/', (req, res) => {
     // }
 
     // сортируем выборку
-    const pokeSort = pokeAll.sort();
+    const pokeSort = pokeAll.sort(sortBy('name'));
 
     // ограничиваем выборку
     const poker = pokeSort.slice(0, 20);
@@ -33,12 +33,12 @@ router.use((err, req, res, next) => {
   res.sendStatus(404);
 });
 
-// сортировка по ID
-function sortByKey(key) {
+// сортировка по переданному полю
+function sortBy(key) {
   return function compare(a,b) {return a[key] < b[key]? -1: a[key] > b[key]? 1: a.name < b.name? -1: a.name > b.name? 1: 0}
 }
 
-// сортировка по Имени
-function sortByName(a,b) {return a < b? -1: a > b? 1: 0}
+// // сортировка по Имени
+// function sortByName(a,b) {return a < b? -1: a > b? 1: 0}
 
 export default router;
